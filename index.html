@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main></main>
+        <h1>Lista de <input type="text" id="listName" placeholder="Tu nombre"></h1>
+        <button id="changeBgColor">Cambia Background</button>
+        
+        <section id="createNote">
+            <h2>Agrega una Nota</h2>
+            <form id="addForm">
+                <input 
+                    type="text"
+                    name="content"
+                    id="content"
+                    placeholder="Escribe aquí..."
+                >
+                <input type="submit" id="addNote" value="Agregar Nota"/>
+            </form>
+        </section>
+
+        <section>
+            <h3>TODO LIST</h3>
+			<ul class="list" id="notes"></ul>
+        </section>
+
+    </main>
+    <script src="changeBg.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
