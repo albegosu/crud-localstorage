@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main></main>
+        <h1>Lista de <input type="text" id="listName" placeholder="Tu nombre"></h1>
+        <button id="changeBgColor">Cambia Background</button>
+        
+        <section id="createNote">
+            <h2>Agrega una Nota</h2>
+            <form id="addForm">
+                <input 
+                    type="text"
+                    name="content"
+                    id="content"
+                    placeholder="Escribe aquí..."/>
+                
+                <div class="category">
+                    <label>
+                        <input 
+                        type="radio" 
+                        name="slcCategory" 
+                        id="category1" 
+                        value="casa">
+                        <span class="bubble casa"></span>
+                        <div>Casa</div>
+                    </label>
+
+                    <label>
+                        <input 
+                        type="radio" 
+                        name="slcCategory" 
+                        id="category2" 
+                        value="trabajo">
+                        <span class="bubble trabajo"></span>
+                        <div>Trabajo</div>
+                    </label>
+                    
+                    <label>
+                        <input 
+                        type="radio" 
+                        name="slcCategory" 
+                        id="category3" 
+                        value="estudio">
+                        <span class="bubble estudio"></span>
+                        <div>Estudio</div>
+                    </label>
+                </div>
+
+                <input type="submit" id="addNote" value="Agregar Nota"/>
+            </form>
+        </section>
+
+        <section>
+            <h3>TODO LIST</h3>
+			<ul class="list" id="notes"></ul>
+        </section>
+        <button id="deleteAll">Delete All Notes</button>
+    </main>
+    <script src="changeBg.js"></script>
+    <script src="list.js"></script>
+</body>
+</html>

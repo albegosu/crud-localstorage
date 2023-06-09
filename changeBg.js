@@ -5,4 +5,4 @@ function changeBackground(colorBg, colorFont) {
     document.body.style.color = colorFont;
  }
  
-btn.addEventListener("click",function() { changeBackground('var(--bgDark)', 'blue') });
+btn.addEventListener("click",function() { changeBackground('var(--bgDark)', 'white') });
