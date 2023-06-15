@@ -1,5 +1,12 @@
 # crud-localstorage/
 
+### FUNCIONALIDADES:
+1. Permite al usuario editar el nombre del propietario
+2. Permite escribir, etiquetar y agregar una nota
+3. Permite marcar como completada una tarea
+4. Permite editar / eliminar una nota
+5. Permite eliminar todas las notas pero mantiene el nombre del propietario en LocalStorage
+
 ### CÓDIGO:
 
 <sub>// CREAR ELEMENTOS QUE CONFIGUREN UNA NUEVA NOTE</sub>
