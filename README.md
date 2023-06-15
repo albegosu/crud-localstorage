@@ -1,19 +1,22 @@
-FUNCIONALIDADES BÁSICAS DE CRUD
-● PERMITIRÁ crear/Create tareas
-● PERMITIRÁ ver/Read la lista de tareas
-● PERMITIRÁ editar/Update las tareas ingresadas previamente
-● PERMITIRÁ eliminar/Delete las tareas ingresadas previamente
-● PERMITIRÁ editar el estado de las tareas ingresadas previamente
-● Las tareas DEBEN tener dos estados (ToDo- Done)
+# crud-localstorage/
 
-FUNCIONES EXTRA
-● DEBE permitir filtrar por estado
-● DEBE permitir categorizar las tareas (Casa, Trabajo, Estudio)
-● DEBE permitir eliminar más de una tarea a la vez
+### FUNCIONALIDADES BÁSICAS DE CRUD<br>
+● PERMITIRÁ crear/Create tareas<br>
+● PERMITIRÁ ver/Read la lista de tareas<br>
+● PERMITIRÁ editar/Update las tareas ingresadas previamente<br>
+● PERMITIRÁ eliminar/Delete las tareas ingresadas previamente<br>
+● PERMITIRÁ editar el estado de las tareas ingresadas previamente<br>
+● Las tareas DEBEN tener dos estados (ToDo- Done)<br>
+<br>
+### FUNCIONES EXTRA<br>
+● DEBE permitir filtrar por estado<br>
+● DEBE permitir categorizar las tareas (Casa, Trabajo, Estudio)<br>
+● DEBE permitir eliminar más de una tarea a la vez<br>
+<br>
+## CÓDIGO:
 
-CÓDIGO:
-
-`window.addEventListener('load', () => {
+```
+window.addEventListener('load', () => {
 	notes = JSON.parse(localStorage.getItem('notes')) || [];
 	const listName = document.querySelector('#listName');
 	const addForm = document.querySelector('#addForm');
@@ -45,7 +48,8 @@ CÓDIGO:
     })
     showNotes();
 });
-
+```
+```
 function showNotes() {
     const notesList = document.querySelector('#notesList');
 
@@ -150,7 +154,8 @@ function showNotes() {
         })
     });    
 }
-
+```
+```
 //BOTON ELIMINAR CON CONFIRMACIÓN
 const deleteAll = document.getElementById("deleteAll");
 deleteAll.addEventListener('click', () => {
@@ -164,4 +169,6 @@ deleteAll.addEventListener('click', () => {
     showNotes(); // Llamamos a shownotes para ver la lista actualizada
     location.reload(); // Necesitamos un reload de la página para ver la lista vacía
   }
-});`
+  
+});
+```
