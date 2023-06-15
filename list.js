@@ -28,6 +28,7 @@ window.addEventListener('load', () => {
 
         showNotes();
     })
+    showNotes();
 });
 
 function showNotes() {
@@ -53,9 +54,10 @@ function showNotes() {
         span.classList.add('bubble');
 
         //DETECTAR CATEGORÍA Y ASIGNAR CLASE
-        switch (note.slcCategory) {
+        switch (note.category) {
             case 'casa':
                 span.classList.add('casa');
+                
                 break;
             case 'trabajo':
                 span.classList.add('trabajo');
@@ -80,6 +82,7 @@ function showNotes() {
         deleteBtn.innerHTML = 'Delete';
 
         //PADRES E HIJOS
+        // span.appendChild(input);
         label.appendChild(input);
         label.appendChild(span);
         actions.appendChild(edit);
@@ -90,7 +93,8 @@ function showNotes() {
 
         //FINALMENTE AGREGAMOS ONENOTE AL GRUPO notesList
         notesList.appendChild(oneNote);
-
+        
+        //MARCAR TAREA COMO 'DONE'
         if (note.done) {
             oneNote.classList.add('done');
         }
@@ -132,3 +136,17 @@ function showNotes() {
     });    
 }
 
+//BOTON ELIMINAR CON CONFIRMACIÓN
+const deleteAll = document.getElementById("deleteAll");
+deleteAll.addEventListener('click', () => {
+  const acept = confirm("¿Estás seguro de que deseas eliminar todas las notas? Esta acción no se puede deshacer.");
+
+  if (acept) {
+    localStorage.removeItem('notes');
+    notes.innerHTML = ""; // Borra todos los elementos <li> existentes
+    notesStorage = []; // Asignamos un array vacío para formatear completamente el localStorage
+    console.log(localStorage);
+    showNotes(); // Llamamos a shownotes para ver la lista actualizada
+    location.reload(); // Necesitamos un reload de la página para ver la lista vacía
+  }
+});

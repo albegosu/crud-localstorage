@@ -1,12 +1,105 @@
-FUNCIONALIDADES BÁSICAS DE CRUD
-● PERMITIRÁ crear/Create tareas
-● PERMITIRÁ ver/Read la lista de tareas
-● PERMITIRÁ editar/Update las tareas ingresadas previamente
-● PERMITIRÁ eliminar/Delete las tareas ingresadas previamente
-● PERMITIRÁ editar el estado de las tareas ingresadas previamente
-● Las tareas DEBEN tener dos estados (ToDo- Done)
+# crud-localstorage/
 
-FUNCIONES EXTRA
-● DEBE permitir filtrar por estado
-● DEBE permitir categorizar las tareas (Casa, Trabajo, Estudio)
-● DEBE permitir eliminar más de una tarea a la vez
+### CÓDIGO:
+
+<sub>// CREAR ELEMENTOS QUE CONFIGUREN UNA NUEVA NOTE</sub>
+```
+const label = document.createElement('label');
+const input = document.createElement('input');
+const span = document.createElement('span');
+const content = document.createElement('div');
+const actions = document.createElement('div');
+const edit = document.createElement('button');
+const deleteBtn = document.createElement('button');
+```
+
+<sub> // DETECTAR CATEGORÍA Y ASIGNAR CLASE</sub>
+```
+switch (note.category) {
+    case 'casa':
+	span.classList.add('casa');
+	break;
+    case 'trabajo':
+	span.classList.add('trabajo');
+	break;
+    case 'estudio':
+	span.classList.add('estudio');
+	break;
+
+    default:
+	span.classList.add('casa');
+	break;
+        };
+```
+
+<sub> // ASIGNAR NOMBRE CLASES</sub>
+```
+content.classList.add('noteContent');
+actions.classList.add('actions');
+edit.classList.add('edit');
+deleteBtn.classList.add('delete');
+
+content.innerHTML = `<input type="text" value="${note.content}" readonly>`;
+edit.innerHTML = 'Edit';
+deleteBtn.innerHTML = 'Delete';
+```
+
+<sub> // PADRES E HIJOS</sub>
+```
+label.appendChild(input);
+label.appendChild(span);
+actions.appendChild(edit);
+actions.appendChild(deleteBtn);
+oneNote.appendChild(label);
+oneNote.appendChild(content);
+oneNote.appendChild(actions);
+```
+<sub> // AGREGAMOS ONENOTE AL GRUPO notesList</sub>
+```
+notesList.appendChild(oneNote);
+```
+
+<sub> // FUNCION PARA BOTÓN DE EDITAR</sub>
+```
+edit.addEventListener('click', (e) => {
+    const input = content.querySelector('input');
+    input.removeAttribute('readonly');
+    input.focus();
+    input.addEventListener('blur', e => {
+	input.setAttribute('readonly', true);
+	note.content = e.target.value;
+	localStorage.setItem('notes', JSON.stringify(notes));
+
+	showNotes();
+    });
+});
+```
+
+<sub> // FUNCION PARA BOTÓN DE BORRAR</sub>
+```
+deleteBtn.addEventListener('click', (e) => {
+    notes = notes.filter(t => t != note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    showNotes();
+    })
+});    
+```
+
+<sub> // BOTON ELIMINAR CON CONFIRMACIÓN</sub>
+```
+const deleteAll = document.getElementById("deleteAll");
+deleteAll.addEventListener('click', () => {
+  const acept = confirm("¿Estás seguro de que deseas eliminar todas las notas? Esta acción no se puede deshacer.");
+
+  if (acept) {
+    localStorage.removeItem('notes');
+    notes.innerHTML = ""; // Borra todos los elementos <li> existentes
+    notesStorage = []; // Asignamos un array vacío para formatear completamente el localStorage
+    console.log(localStorage);
+    showNotes(); // Llamamos a shownotes para ver la lista actualizada
+    location.reload(); // Necesitamos un reload de la página para ver la lista vacía
+  }
+  
+});
+```
