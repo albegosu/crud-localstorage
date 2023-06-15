@@ -16,8 +16,7 @@ window.addEventListener('load', () => {
         const note = {
             content: e.target.elements.content.value,
             category: e.target.elements.slcCategory.value,
-            done: false,
-            createdAt: new Date().getTime()
+            done: false
         }
 
         notes.push(note);
@@ -40,7 +39,6 @@ function showNotes() {
         const oneNote = document.createElement('div');
         oneNote.classList.add('oneNote');
 
-        //CREAR ELEMENTOS QUE CONFIGUREN UNA NUEVA NOTE
         const label = document.createElement('label');
         const input = document.createElement('input');
         const span = document.createElement('span');
@@ -53,11 +51,9 @@ function showNotes() {
         input.checked = note.done;
         span.classList.add('bubble');
 
-        //DETECTAR CATEGORÍA Y ASIGNAR CLASE
         switch (note.category) {
             case 'casa':
                 span.classList.add('casa');
-                
                 break;
             case 'trabajo':
                 span.classList.add('trabajo');
@@ -71,7 +67,6 @@ function showNotes() {
                 break;
         };
 
-        //ASIGNAR NOMBRE CLASES
         content.classList.add('noteContent');
         actions.classList.add('actions');
         edit.classList.add('edit');
@@ -81,8 +76,6 @@ function showNotes() {
         edit.innerHTML = 'Edit';
         deleteBtn.innerHTML = 'Delete';
 
-        //PADRES E HIJOS
-        // span.appendChild(input);
         label.appendChild(input);
         label.appendChild(span);
         actions.appendChild(edit);
@@ -91,10 +84,8 @@ function showNotes() {
         oneNote.appendChild(content);
         oneNote.appendChild(actions);
 
-        //FINALMENTE AGREGAMOS ONENOTE AL GRUPO notesList
         notesList.appendChild(oneNote);
         
-        //MARCAR TAREA COMO 'DONE'
         if (note.done) {
             oneNote.classList.add('done');
         }
@@ -112,7 +103,6 @@ function showNotes() {
             showNotes();
         })
 
-        //FUNCION PARA BOTÓN DE EDITAR
         edit.addEventListener('click', (e) => {
             const input = content.querySelector('input');
             input.removeAttribute('readonly');
@@ -126,7 +116,6 @@ function showNotes() {
             });
         });
 
-        //FUNCION PARA BOTÓN DE BORRAR
         deleteBtn.addEventListener('click', (e) => {
             notes = notes.filter(t => t != note);
             localStorage.setItem('notes', JSON.stringify(notes));
@@ -134,19 +123,19 @@ function showNotes() {
             showNotes();
         })
     });    
-}
+};
 
-//BOTON ELIMINAR CON CONFIRMACIÓN
 const deleteAll = document.getElementById("deleteAll");
 deleteAll.addEventListener('click', () => {
   const acept = confirm("¿Estás seguro de que deseas eliminar todas las notas? Esta acción no se puede deshacer.");
 
   if (acept) {
     localStorage.removeItem('notes');
-    notes.innerHTML = ""; // Borra todos los elementos <li> existentes
-    notesStorage = []; // Asignamos un array vacío para formatear completamente el localStorage
+    notes.innerHTML = ""; 
+    notesStorage = []; 
     console.log(localStorage);
-    showNotes(); // Llamamos a shownotes para ver la lista actualizada
-    location.reload(); // Necesitamos un reload de la página para ver la lista vacía
+    showNotes(); 
+    location.reload(); 
   }
+
 });

@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List!</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main></main>
-        <h1>Lista de <input type="text" id="listName" placeholder="Tu nombre"></h1>
-        <button id="changeBgColor">Cambia Background</button>
+    <main>
+        <section class="h1Name">
+            <h1>Lista de <input type="text" id="listName" placeholder="Tu nombre"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ballpen" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00F482" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M14 6l7 7l-4 4" />
+                <path d="M5.828 18.172a2.828 2.828 0 0 0 4 0l10.586 -10.586a2 2 0 0 0 0 -2.829l-1.171 -1.171a2 2 0 0 0 -2.829 0l-10.586 10.586a2.828 2.828 0 0 0 0 4z" />
+                <path d="M4 20l1.768 -1.768" />
+              </svg></h1>
+        </section>
         
         <section id="createNote">
             <h2>Agrega una Nota</h2>
@@ -19,19 +28,49 @@
                     type="text"
                     name="content"
                     id="content"
-                    placeholder="Escribe aquí..."
-                >
+                    placeholder="Escribe aquí..."/>
+                
+                <div class="category">
+                    <label>
+                        <input 
+                        type="radio" 
+                        name="slcCategory" 
+                        id="category1" 
+                        value="casa">
+                        <span class="bubble casa"></span>
+                        <div>Casa</div>
+                    </label>
+
+                    <label>
+                        <input 
+                        type="radio" 
+                        name="slcCategory" 
+                        id="category2" 
+                        value="trabajo">
+                        <span class="bubble trabajo"></span>
+                        <div>Trabajo</div>
+                    </label>
+                    
+                    <label>
+                        <input 
+                        type="radio" 
+                        name="slcCategory" 
+                        id="category3" 
+                        value="estudio">
+                        <span class="bubble estudio"></span>
+                        <div>Estudio</div>
+                    </label>
+                </div>
+
                 <input type="submit" id="addNote" value="Agregar Nota"/>
             </form>
         </section>
 
         <section>
-            <h3>TODO LIST</h3>
-			<ul class="list" id="notes"></ul>
+            <h3>NOTAS:</h3>
+			<ul class="list" id="notesList"></ul>
         </section>
         <button id="deleteAll">Delete All Notes</button>
-    </main>
-    <script src="changeBg.js"></script>
-    <script src="app.js"></script>
+    <script src="list.js"></script>
 </body>
 </html>
